@@ -1,0 +1,177 @@
+<div class="container">
+    <div class="row">
+      <div class="col-6">
+        <h2>accounts</h2>
+      </div>
+      <div class="col-6 text-end">
+        <button class="btn btn-success" (click)="openAddEditModal(null)">Add account</button>
+      </div>
+    </div>
+  <div class="row">
+    <div class="col-lg-12 table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Full Name</th>
+            <th>Fathers Name</th>
+            <th>Mothers Name</th>
+            <th>D-O-B</th>
+            <th>Country</th>
+            <th>State</th>
+            <th>City</th>
+            <th>Address</th>
+            <th>Pin Code</th>
+            <th>Phone Number</th>
+            <th>Education</th>
+            <th>Id No.</th>
+            <th>Account Type</th>
+            <th class="text-center">Actions</th>
+            <!-- <th>Accounts</th>
+            <th>Loans</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let account of viewModel.accountsListL">
+            <td>{{ account.fullName }}</td>
+            <td>{{ account.fathersName }}</td>
+            <td>{{account.mothersName}}</td>
+            <td>{{account.dob | date:'dd/MM/yyyy'}}</td>
+            <td>{{account.country}}</td>
+            <td>{{account.state}}</td>
+            <td>{{account.city}}</td>
+            <td>{{account.address}}</td>
+            <td>{{account.pincode}}</td>
+            <td>{{account.phoneNumber}}</td>
+            <td>{{account.educationLevel}}</td>
+            <td>{{account.proofOfIdentification}}</td>
+            <td>{{account.accountType}}</td>
+            <td>
+              <button class="btn btn-primary" (click)="openAddEditModal(account._id)">Edit</button>&nbsp;&nbsp;
+              <button class="btn btn-danger" (click)="deleteAccount(account._id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+  </div>
+
+
+
+  <div class="modal expandIn" tabindex="-1" role="dialog" [ngStyle]="{'display':viewModel.displayStyle}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="col-lg-11 col-md-11 col-sm-11 col-11">
+            <h5> Add Account </h5>
+          </div>
+          <button type="button" class="btn-close" (click)="closePopup()"></button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+                    <div class="form-outline">
+                        <input type="text" placeholder="Enter Full Name" [(ngModel)]="viewModel.accountsObj.fullName"  class="form-control" data-mdb-showcounter="true"
+                            maxlength="20" />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+                    <div class="form-outline">
+                        <input type="text" placeholder="Enter Fathers Name" [(ngModel)]="viewModel.accountsObj.fathersName" class="form-control" data-mdb-showcounter="true"
+                            maxlength="20" />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+                    <div class="form-outline">
+                        <input type="text" placeholder="Enter Mothers Name" class="form-control" [(ngModel)]="viewModel.accountsObj.mothersName" data-mdb-showcounter="true"
+                            maxlength="20" />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+                    <div class="form-outline">
+                        <input type="text" placeholder="Enter Country Name" [(ngModel)]="viewModel.accountsObj.country" class="form-control" data-mdb-showcounter="true"
+                            maxlength="20" />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+                    <div class="form-outline">
+                        <input type="text" placeholder="Enter State Name" [(ngModel)]="viewModel.accountsObj.state" class="form-control" data-mdb-showcounter="true"
+                            maxlength="20" />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+                    <div class="form-outline">
+                        <input type="text" placeholder="Enter City Name" [(ngModel)]="viewModel.accountsObj.city" class="form-control" data-mdb-showcounter="true"
+                            maxlength="20" />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+                    <div class="form-outline">
+                        <input type="text" placeholder="Enter Permenant Address" [(ngModel)]="viewModel.accountsObj.address" class="form-control" data-mdb-showcounter="true"
+                            maxlength="20" />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+                    <div class="form-outline">
+                        <input type="text" placeholder="Enter PINCODE" [(ngModel)]="viewModel.accountsObj.pincode" class="form-control" data-mdb-showcounter="true"
+                            maxlength="20" />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+                    <div class="form-outline">
+                        <input type="date" placeholder="Enter D-O-B" [(ngModel)]="viewModel.accountsObj.dob" class="form-control" data-mdb-showcounter="true"
+                            maxlength="20" />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+                    <div class="form-outline">
+                        <input type="text" placeholder="Enter Phone Number" [(ngModel)]="viewModel.accountsObj.phoneNumber" class="form-control" data-mdb-showcounter="true"
+                            maxlength="20" />
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+                    <div class="form-outline">
+                        <select class="form-select " [(ngModel)]="viewModel.accountsObj.educationLevel"
+                        aria-label="Default select example" #SelectRole="ngModel">
+                        <option value="undefined" disabled selected>Education Level</option>
+                        <option *ngFor="let item of viewModel.listOfIdProofType" [value]="item">{{ item }}</option>
+                        </select>
+
+                    </div>
+                   </div>
+                   <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+                    <div class="form-outline">
+                      <select [(ngModel)]="viewModel.accountsObj.accountType" name="accountType" class="form-select" required>
+                        <option value="undefined" disabled selected>Choose Account Type</option>
+                        <option *ngFor="let item of viewModel.listOfAccountType" [value]="item">{{item}}</option>
+                        <!-- Add other account types as needed -->
+                      </select>
+                    </div>
+                  </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+                    <div class="form-outline">
+                        <input type="text" placeholder="Enter ID Number" [(ngModel)]="viewModel.accountsObj.idNumber" class="form-control" data-mdb-showcounter="true"
+                            maxlength="20" />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+                    <div class="form-outline">
+                      <select [(ngModel)]="viewModel.accountsObj.proofOfIdentification" name="proofOfIdentification" class="form-select" required>
+                        <option value="undefined" disabled selected>Prof Identification</option>
+                         <option *ngFor="let item of viewModel.listOfEducationLevelType" [value]="item">{{item}}</option>
+                        <!-- Add other proof of identification options as needed -->
+                      </select>
+                    </div>
+                  </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" (click)="saveAccount()" class="btn btn-primary">Save me</button>
+        </div>
+      </div>
+    </div>
+  </div>

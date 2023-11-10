@@ -1,0 +1,67 @@
+/* header.component.css */
+
+
+.logOutLink {
+    color: black;
+    cursor: default;
+    padding: 6px;
+}
+.logOutLink:hover {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.dropdown-menu{
+    background: teal;
+    color: black;
+    font-weight: 600;
+    font-size:16px;
+}
+.dropdown-item {
+    color: black;
+    font-weight: 500;
+    font-size: 16px;
+
+}
+.dropdown-item:hover {
+    background: green;
+    cursor: pointer;
+}
+.toggleBtn{
+    background: rgb(145, 145, 181) !important;
+}
+.toggleBtn:hover{
+    background-color:rgb(219, 208, 208);
+}
+
+.dropdown-toggle label{
+    cursor: pointer;
+}
+.dropdown-toggle::after {
+    font-size: 16px;
+    display: inline-block;
+    margin-top: 4px;
+    margin-left: 5px; /* Add some spacing between the text and the arrow */
+    cursor: pointer;
+    display: none;
+}
+
+.topNavIcons{
+    float: right;
+    margin-right: 10%;
+}
+.badge {
+    font-size: 9px;
+}
+.bi-bell{
+    font-size: large;
+}
+.bi-caret-down{
+    font-size: large;
+    margin-left: 20%;
+}
+
+
+
+
+

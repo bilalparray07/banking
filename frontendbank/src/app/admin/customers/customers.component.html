@@ -1,0 +1,140 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h2>Customers</h2>
+    </div>
+    <div class="col-6 text-end">
+      <button class="btn btn-success" (click)="openAddEditModal(null)">Add Customer</button>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>D-O-B</th>
+        <th>Address</th>
+        <th class="text-center">Actions</th>
+        <!-- <th>Accounts</th>
+        <th>Loans</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of viewModel.customerList">
+        <td>{{ customer.firstName }}</td>
+        <td>{{ customer.lastName }}</td>
+        <td>{{customer.emailAddress}}</td>
+        <td>{{customer.phoneNumber}}</td>
+        <td>{{customer.dob | date:'dd/MM/yyyy'}}</td>
+        <td>{{customer.address}}</td>
+        <!-- <td>{{customer.accounts}}</td>
+        <td>{{customer.loans}}</td> -->
+        <td>
+          <button class="btn btn-primary" (click)="openAddEditModal(customer._id)">Edit</button>&nbsp;&nbsp;
+          <button class="btn btn-danger" (click)="deleteCustomer(customer._id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
+
+<!-- Add/Edit Customer Modal -->
+
+<div class="modal expandIn" tabindex="-1" role="dialog" [ngStyle]="{'display':viewModel.displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="col-lg-11 col-md-11 col-sm-11 col-11">
+          <h5> Add Customer </h5>
+        </div>
+        <button type="button" class="btn-close" (click)="closePopup()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+
+          <div class="col-lg-5 col-md-6 col-sm-12 col-12 mb-1">
+            <label> Name <span class="text-danger fs-5">*</span> </label>
+          </div>
+
+          <div class="col-lg-7 col-md-6 col-sm-12 col-12 mb-1">
+            <input type="text" class="form-control" required="required" [(ngModel)]="viewModel.customerObject.firstName"
+              value="{{viewModel.customerObject.firstName}}" placeholder="Enter Customer Name">
+
+          </div>
+
+          <div class="col-lg-5 col-md-6 col-sm-12 col-12 mb-1">
+            <label> Last Name <span class="text-danger fs-5">*</span> </label>
+          </div>
+
+          <div class="col-lg-7 col-md-6 col-sm-12 col-12 mb-1">
+            <input type="text" class="form-control" required="required" [(ngModel)]="viewModel.customerObject.lastName"
+              value="{{viewModel.customerObject.lastName}}" placeholder="Enter LastNanme">
+
+          </div>
+          <div class="col-lg-5 col-md-6 col-sm-12 col-12 mb-1">
+            <label> Email <span class="text-danger fs-5">*</span> </label>
+          </div>
+
+          <div class="col-lg-7 col-md-6 col-sm-12 col-12 mb-1">
+            <input type="text" class="form-control" required="required"
+              [(ngModel)]="viewModel.customerObject.emailAddress" value="{{viewModel.customerObject.emailAddress}}"
+              placeholder="Enter Email Address">
+          </div>
+          <div class="col-lg-5 col-md-6 col-sm-12 col-12 mb-1">
+            <label> Phone Number <span class="text-danger fs-5">*</span> </label>
+          </div>
+
+          <div class="col-lg-7 col-md-6 col-sm-12 col-12 mb-1">
+            <input type="text" class="form-control" required="required"
+              [(ngModel)]="viewModel.customerObject.phoneNumber" value="{{viewModel.customerObject.phoneNumber}}"
+              placeholder="Enter Phone Number">
+          </div>
+          <div class="col-lg-5 col-md-6 col-sm-12 col-12 mb-1">
+            <label> D-O-B <span class="text-danger fs-5">*</span> </label>
+          </div>
+
+          <div class="col-lg-7 col-md-6 col-sm-12 col-12 mb-1">
+            <input type="date" class="form-control" required="required"
+              [(ngModel)]="viewModel.customerObject.dob" value="{{viewModel.customerObject.dob}}"
+              placeholder="Enter Phone Number">
+          </div>
+          <div class="col-lg-5 col-md-6 col-sm-12 col-12 mb-1">
+            <label> Address <span class="text-danger fs-5">*</span> </label>
+          </div>
+
+           <div class="col-lg-7 col-md-6 col-sm-12 col-12 mb-1">
+            <input type="text" class="form-control" required="required"
+              [(ngModel)]="viewModel.customerObject.address" value="{{viewModel.customerObject.address}}"
+              placeholder="Enter Permenant Address">
+          </div>
+         <!-- <div class="col-lg-5 col-md-6 col-sm-12 col-12 mb-1">
+            <label> Account Type <span class="text-danger fs-5">*</span> </label>
+          </div>
+
+          <div class="col-lg-7 col-md-6 col-sm-12 col-12 mb-1">
+            <input type="text" class="form-control" required="required"
+              [(ngModel)]="viewModel.customerObject.accounts" value="{{viewModel.customerObject.accounts}}"
+              placeholder="Enter Account Type">
+          </div>
+          <div class="col-lg-5 col-md-6 col-sm-12 col-12 mb-1">
+            <label> Loan Type <span class="text-danger fs-5">*</span> </label>
+          </div>
+
+          <div class="col-lg-7 col-md-6 col-sm-12 col-12 mb-1">
+            <input type="text" class="form-control" required="required"
+              [(ngModel)]="viewModel.customerObject.loans" value="{{viewModel.customerObject.loans}}"
+              placeholder="Enter Account Type">
+          </div> -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="saveCustomer()" class="btn btn-primary">Save me</button>
+      </div>
+    </div>
+  </div>
+</div>

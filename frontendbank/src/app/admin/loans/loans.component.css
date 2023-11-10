@@ -1,0 +1,26 @@
+.table-container {
+    width: 1000px;
+    overflow: scroll;
+    height: 420px;
+  }
+
+
+  .table {
+    width: 100%; /* Ensure the table takes full width of the container */
+    table-layout: scroll;
+    border: solid rgb(107, 201, 255) 2px;
+  }
+  table td,
+table th {
+  border: 1px solid rgb(223, 238, 241); /* Add a border to table cells */
+  padding: 8px; /* Add padding for better spacing */
+  color:aliceblue
+}
+
+  thead {
+    /* position: ; */
+    width: 100%;
+    top: 80; /* Stick the header to the top */
+    background: rgb(39, 76, 127);         /* Ensure the header remains visible */
+    z-index: 1; /* Make the header appear above other elements */
+  }

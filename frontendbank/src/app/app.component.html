@@ -1,0 +1,7 @@
+<div [ngClass]="[commonService.layoutVM.toogleWrapper]">
+  <app-sidebar *ngIf="isSidebarVisible && commonService.layoutVM.isAdmin"></app-sidebar>
+  <div id="content">
+    <app-header class="topBar" *ngIf="commonService.layoutVM.isAdmin"></app-header>
+    <router-outlet></router-outlet>
+  </div>
+</div>

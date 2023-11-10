@@ -1,0 +1,63 @@
+<div id="sidebar" class="scrollable" [ngClass]="[commonService.layoutVM.toggleSideMenu]"
+    *ngIf="commonService.layoutVM.showLeftSideMenu">
+    <div class="mainContainer">
+      <div class="profile_wrapper">
+          <div class="profile_img_wrapper">
+              <img src="assets/blank-profile-picture.webp" alt="profile" loading="lazy"
+                  class="profile_img">
+              <i class="bi bi-camera-fill addProfileIcon" (click)="fileInput.click()"
+                  (mouseenter)="showTooltip = true" (mouseleave)="showTooltip = false"
+                  [attr.title]="'Upload'" [attr.data-placement]="'left'"
+                  [ngClass]="{ 'tooltip-show': showTooltip }"></i>
+              <input #fileInput type="file" id="fileInput"
+                  accept=".png,.jpg,.jpeg,.jpe,.jfif,.JPG,.PNG,.JPEG,.JPE,.JFIF,.BMP,.bmp" style="display: none;"
+               >
+          </div>
+
+      </div>
+      <label class="text-center">Dummy</label>
+  </div>
+    <ul class="list-unstyled  ">
+    <ng-container >
+        <li routerLinkActive="active" [routerLink]="['/admin']" >
+            <i  class=" bi bi-house-door ms-3 fs-5 "></i>
+            <span class="item-name ms-2 "> Dashboard</span>
+        </li>
+        <li routerLinkActive="active" [routerLink]="['/customers']" >
+            <i  class=" bi bi-people ms-3 fs-5 "></i>
+            <span class="item-name ms-2 "> Customers</span>
+        </li>
+        <li routerLinkActive="active" [routerLink]="['/accounts']" >
+            <i  class=" bi bi-person-rolodex ms-3 fs-5 "></i>
+            <span class="item-name ms-2 "> Accounts</span>
+        </li>
+        <!-- <li routerLinkActive="active" [routerLink]="['/loantype']" >
+            <i  class=" bi bi-bank ms-3 fs-5 "></i>
+            <span class="item-name ms-2 "> Loan Type</span>
+        </li> -->
+        <li routerLinkActive="active" [routerLink]="['/loans']" >
+            <i  class=" bi bi-coin ms-3 fs-5 "></i>
+            <span class="item-name ms-2 ">loans</span>
+        </li>
+        <li routerLinkActive="active" [routerLink]="['/payments']" >
+            <i  class=" bi bi-cash-coin ms-3 fs-5 "></i>
+            <span class="item-name ms-2 "> Payments</span>
+        </li>
+
+        <li routerLinkActive="active" [routerLink]="['/reports']" >
+            <i  class=" bi bi-graph-up-arrow ms-3 fs-5 "></i>
+            <span class="item-name ms-2 "> Reports</span>
+        </li>
+        <li routerLinkActive="active" [routerLink]="['/activity']" >
+            <i  class=" bi bi-activity ms-3 fs-5 "></i>
+            <span class="item-name ms-2 "> Activity</span>
+        </li>
+        <li routerLinkActive="active" [routerLink]="['/settings']" >
+            <i  class=" bi bi-gear ms-3 fs-5 "></i>
+            <span class="item-name ms-2 "> Settings</span>
+        </li>
+    </ng-container>
+
+
+</ul>
+    </div>

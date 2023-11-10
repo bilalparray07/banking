@@ -1,0 +1,59 @@
+.card{
+  border-radius: 22px;
+  /* // box-shadow: 7px 7px 5px rgb(196, 226, 236)!important; */
+}
+.card-title{
+  color: #ffff;
+  font-size: 25px;
+  margin-top: -7%;
+}
+.bg-c-blue {
+  background: linear-gradient(45deg,#4099ff,#73b4ff);
+  height: 100px;
+  border-radius: 20px;
+}
+
+.bg-c-green {
+  background: linear-gradient(45deg,#2ed8b6,#59e0c5);
+  height: 100px;
+  border-radius: 20px;
+}
+.bg-c-yellow {
+  background: linear-gradient(45deg,#FFB64D,#ffcb80);
+  height: 100px;
+  border-radius: 20px;
+}
+.bg-c-pink {
+  background: linear-gradient(45deg,#FF5370,#ff869a);
+  height: 100px;
+  border-radius: 20px;
+}
+p{
+  color: #0c0c0c !important;
+}
+.barChart{
+height:340px !important;
+background-color: white;
+}
+.pieChart{
+height:340px !important;
+background-color: white;
+}
+
+.fixed-row {
+position: sticky;
+top: 0;
+z-index: 999;
+/* background-color: var(--body-background-color) */
+}
+
+.scrollable-row {
+overflow-y: auto;
+max-height: 400px; /* Set the maximum height for scrollable area as needed */
+}
+.input-group{
+width: 20%;
+}
+.input-group-append{
+border-radius: 0%;
+}

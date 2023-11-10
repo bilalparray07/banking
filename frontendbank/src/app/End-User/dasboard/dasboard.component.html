@@ -1,0 +1,70 @@
+   <!-- Navbar -->
+   <!-- <nav class="navbar navbar-expand-lg navbar-dark">
+    <span class="navbar-brand" >Alias Bank</span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Accounts</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Transactions</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav> -->
+
+<!-- Jumbotron -->
+<div class="jumbotron text-center " [style.background-image]="'url(assets/bank5.jpg)'">
+    <h1 class="text-white">Welcome to Alias Bank</h1>
+    <p class="text-white">Your Trusted Financial Partner</p>
+    <a class="btn btn-secondary btn-lg"[routerLink]="['/account']" role="button">Open Account</a>
+  </div>
+
+<!-- Account Cards -->
+<div class="container">
+    <div class="row m-1">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Savings Account</h5>
+                    <p class="card-text">Earn interest on your savings.</p>
+                    <a  class="btn btn-primary">Open Account</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Checking Account</h5>
+                    <p class="card-text">Manage your day-to-day expenses.</p>
+                    <a class="btn btn-primary" routerLink="/userloan">Apply For loan</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Investment Account</h5>
+                    <p class="card-text">investment options.</p>
+                    <a href="#" class="btn btn-primary">Open Account</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer text-center">
+    <div class="container">
+        <p>&copy; 2023 Bank Name. All Rights Reserved.</p>
+    </div>
+</footer>

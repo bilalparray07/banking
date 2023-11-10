@@ -1,0 +1,134 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 p-5">
+      <div class="card">
+        <div class="card-header text-center">
+          <b>
+            <h5>Loan Request</h5>
+          </b>
+        </div>
+        <div class="card-body">
+          <form #userLoanRequestForm="ngForm">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+              <input type="text" placeholder="Loan Number" [(ngModel)]="loansVMObj.loanDataObj.loanNumber"
+                class="form-control" name="loanNumber" data-mdb-showcounter="true" maxlength="20"
+                [disabled]="loansVMObj.isLoanNumberGenerated" (click)="generateLoanNumber()" />
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+              <div class="form-outline">
+                <input type="text" placeholder="Enter Amount" [(ngModel)]="loansVMObj.loanDataObj.amount"
+                  class="form-control" data-mdb-showcounter="true" required pattern="^\d{1,15}$" maxlength="15"
+                  #amount="ngModel" name="amount">
+              <div *ngFor="let validation of loansVMObj.validations.amount">
+                  <div *ngIf="(amount.touched || loansVMObj.formSubmitted) && amount.hasError(validation.type)"
+                      class="text-danger validationMsg">
+                      {{validation.message}}
+                  </div>
+              </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+              <div class="form-outline">
+                <select class="form-select " [(ngModel)]="loansVMObj.loanDataObj.term"
+                  aria-label="Default select example" required
+                  name="term" #term="ngModel">
+                  <option value="undefined" disabled selected>Duration In Months</option>
+                  <option value='1'>12 Months</option>
+                  <option value='2'>24 Months</option>
+                  <option value='3'>36 Months</option>
+                  <option value='4'>48 Months</option>
+                </select>
+                <div *ngFor="let validation of loansVMObj.validations.term">
+                  <div *ngIf="(term.touched || loansVMObj.formSubmitted) && term.hasError(validation.type)"
+                      class="text-danger validationMsg">
+                      {{validation.message}}
+                  </div>
+              </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+              <div class="form-outline">
+                <input type="date" placeholder="Enter Start Date" [(ngModel)]="loansVMObj.loanDataObj.startDate"
+                  class="form-control" data-mdb-showcounter="true" required name="startDate"
+                  #startDate="ngModel">
+              <div *ngFor="let validation of loansVMObj.validations.startDate">
+                  <div *ngIf="(startDate.touched || loansVMObj.formSubmitted) && startDate.hasError(validation.type)"
+                      class="text-danger validationMsg">
+                      {{validation.message}}
+                  </div>
+              </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+              <div class="form-outline">
+                <input type="date" placeholder="End Date" [(ngModel)]="loansVMObj.loanDataObj.endDate"
+                  class="form-control" data-mdb-showcounter="true" required name="endDate"
+                  #endDate="ngModel">
+              <div *ngFor="let validation of loansVMObj.validations.endDate">
+                  <div *ngIf="(endDate.touched || loansVMObj.formSubmitted) && endDate.hasError(validation.type)"
+                      class="text-danger validationMsg">
+                      {{validation.message}}
+                  </div>
+              </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+              <div class="form-outline">
+                  <select class="form-select " [(ngModel)]="loansVMObj.loanDataObj.loanType"
+                  aria-label="Default select example" required
+                  name="loanType" #loanType="ngModel">
+                  <option value="undefined" disabled selected>Select Loan type</option>
+                  <option *ngFor="let item of loansVMObj.listOfLoantypes;let i = index" [value]="item">{{ item }}</option>
+                </select>
+                <div *ngFor="let validation of loansVMObj.validations.loanType">
+                  <div *ngIf="(loanType.touched || loansVMObj.formSubmitted) && loanType.hasError(validation.type)"
+                      class="text-danger validationMsg">
+                      {{validation.message}}
+                  </div>
+              </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+
+                <div class="form-outline">
+                  <select class="form-select " [(ngModel)]="loansVMObj.loanDataObj.collateral"
+                    aria-label="Default select example" required
+                    name="collateral" #collateral="ngModel">
+                    <option value="undefined" disabled selected>Select Collateral/Mortgage</option>
+                    <option *ngFor="let item of loansVMObj.listOfColateralls" [value]="item">{{ item }}</option>
+                  </select>
+                  <div *ngFor="let validation of loansVMObj.validations.collateral">
+                    <div *ngIf="(collateral.touched || loansVMObj.formSubmitted) && collateral.hasError(validation.type)"
+                        class="text-danger validationMsg">
+                        {{validation.message}}
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 p-2">
+              <div class="form-outline">
+                <input type="text" placeholder="Interest Rate" class="form-control"
+                  [(ngModel)]="loansVMObj.loanDataObj.interestRate" [readonly]="loansVMObj.isInterestGenerated" (click)="calculateInterest()" data-mdb-showcounter="true" required name="interestRate"
+
+                  minlength="1" maxlength="13"  #interestRate="ngModel">
+              <div *ngFor="let validation of loansVMObj.validations.interestRate">
+                  <div *ngIf="(interestRate.touched || loansVMObj.formSubmitted) && interestRate.hasError(validation.type)"
+                      class="text-danger validationMsg">
+                      {{validation.message}}
+                  </div>
+              </div>
+              </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 text-end">
+              <button class="btn btn-primary" (click)="createLoanRequest(userLoanRequestForm)">Submit</button>
+            </div>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
